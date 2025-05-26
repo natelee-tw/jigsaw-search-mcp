@@ -1,0 +1,51 @@
+# Research on Reasoning in Large Language Models
+
+After exploring the deeplearning.ai website, I identified "Reasoning in Large Language Models" as a significant research area in AI. This topic is particularly interesting as it addresses one of the fundamental challenges in making AI systems more capable of complex problem-solving.
+
+## Key Papers and Findings
+
+1. **Hypothesis Testing Prompting Improves Deductive Reasoning in Large Language Models** (2024-05-09)
+   - Authors: Yitian Li, Jidong Tian, Hao He, Yaohui Jin
+   - Introduces "Hypothesis Testing Prompting" which adds conclusion assumptions, backward reasoning, and fact verification during reasoning steps
+   - This approach significantly improves reasoning performance on ProofWriter and RuleTaker datasets
+   - Addresses common issues like invalid reasoning and fictional reasoning paths
+
+2. **Ensembling Large Language Models with Process Reward-Guided Tree Search** (2024-12-20)
+   - Authors: Sungjin Park, Xiao Liu, Yeyun Gong, Edward Choi
+   - Presents "LE-MCTS," a framework for process-level ensembling of language models
+   - Uses Monte Carlo Tree Search to identify the most accurate reasoning chains
+   - Showed 3.6% and 4.3% improvements on MATH and MQA datasets
+
+3. **Enhance Reasoning Ability of Visual-Language Models via Large Language Models** (2023-05-22)
+   - Authors: Yueting Yang, Xintong Zhang, Wenjuan Han
+   - Proposes TReE method to transfer reasoning abilities from LLMs to visual language models
+   - Implements a three-stage approach: observation, thinking, and re-thinking
+   - Enables zero-shot reasoning in visual contexts
+
+4. **Implicit Reasoning in Transformers is Reasoning through Shortcuts** (2025-03-10)
+   - Authors: Tianhe Lin, Jian Xie, Siyu Yuan, Deqing Yang
+   - Reveals that language models acquire implicit reasoning through shortcut learning
+   - Models perform well on fixed-pattern data but struggle with generalization
+   - This limitation affects even state-of-the-art LLMs
+
+5. **Language Matters: How Do Multilingual Input and Reasoning Paths Affect Large Reasoning Models?** (2025-05-23)
+   - Authors: Zhi Rui Tam, Cheng-Kuang Wu, Yu Ying Chiu, Chieh-Yen Lin, Yun-Nung Chen, Hung-yi Lee
+   - Finds that LRMs tend to default to reasoning in high-resource languages (e.g., English)
+   - Performance declines when models are forced to reason in low-resource languages
+   - Effect of language choice varies by task type
+
+## Conclusion
+
+Research on reasoning in large language models reveals several important trends:
+
+1. **Novel prompting techniques** are enhancing reasoning capabilities, with approaches like hypothesis testing showing promise.
+
+2. **Ensemble methods** that combine multiple models can achieve better reasoning results than single models.
+
+3. **Cross-modal transfer** of reasoning abilities from language models to visual models represents an important development.
+
+4. **Shortcut learning** remains a significant challenge, with models often learning pattern recognition rather than true reasoning.
+
+5. **Language bias** affects reasoning capabilities, with better performance in high-resource languages.
+
+As reasoning capabilities continue to improve, we can expect more sophisticated AI systems that can handle increasingly complex problem-solving tasks across various domains.
