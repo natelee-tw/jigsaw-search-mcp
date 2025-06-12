@@ -1,18 +1,10 @@
 {
     "mcpServers": {
         
-        "filesystem": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "@modelcontextprotocol/server-filesystem",
-                "."
-            ]
-        },
-        
-        "research": {
+    
+        "jigsaw": {
             "command": "uv",
-            "args": ["run", "src/research_server.py"]
+            "args": ["run", "src/jigsaw_server.py"]
         },
         
         "fetch": {

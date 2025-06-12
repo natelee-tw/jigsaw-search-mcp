@@ -1,2 +1,5 @@
 .env
 __pycache__/
+.gauth.json
+api_key.txt
+.vscode/
