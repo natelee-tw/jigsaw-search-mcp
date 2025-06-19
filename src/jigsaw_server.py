@@ -46,7 +46,23 @@ def search_role(role: str, working_office: str = "Singapore") -> List[str]:
     response = requests.get(url, headers=headers, params=params, verify=False)
 
     if response.status_code == 200:
-        return response.json()  # full list of person dicts
+        people = response.json()
+        info = []
+        for person in people:
+            info.append({
+                "employeeId": person.get("employeeId"),
+                "preferredName": person.get("preferredName"),
+                "gender": person.get("gender"),
+                "role": person.get("role"),
+                "grade": person.get("grade"),
+                "hireDate": person.get("hireDate"),
+                "totalExperience": person.get("totalExperience"),
+                "twExperience": person.get("twExperience"),
+                "homeOffice": person.get("homeOffice"),
+                "workingOffice": person.get("workingOffice"),
+            })
+        return info
+
     else:
         print(f"Error fetching data from Jigsaw: {response.status_code}")
         return []
@@ -71,3 +87,5 @@ def generate_people_search_prompt(role: str, working_office: str = "Singapore") 
 if __name__ == "__main__":
     # Initialize and run the server
     mcp.run(transport='stdio')
+    
+    # print(search_role("Machine Learning Engineer", "Singapore"))

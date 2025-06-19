@@ -93,23 +93,27 @@ class MCP_ChatBot:
         messages = [{'role':'user', 'content':query}]
         
         while True:
+            print(f"\nProcessing query... {query}")
             response = self.anthropic.messages.create(
                 max_tokens = 2024,
                 model = 'claude-3-7-sonnet-20250219', 
-                tools = self.available_tools,
+                tools = self.available_tools, 
                 messages = messages,
             )
             
             assistant_content = []
             has_tool_use = False
             
+            print("Thinking...")
             for content in response.content:
                 if content.type == 'text':
                     print(content.text)
+                    print("\n")
                     assistant_content.append(content)
                 elif content.type == 'tool_use':
                     has_tool_use = True
                     assistant_content.append(content)
+                    print(f"Calling Tool with input {content.input}")
                     messages.append({'role':'assistant', 'content':assistant_content})
                     
                     # Get session and call tool
@@ -133,31 +137,6 @@ class MCP_ChatBot:
             # Exit loop if no tool was used
             if not has_tool_use:
                 break
-
-    async def get_resource(self, resource_uri):
-        session = self.sessions.get(resource_uri)
-        
-        # Fallback for papers URIs - try any papers resource session
-        if not session and resource_uri.startswith("papers://"):
-            for uri, sess in self.sessions.items():
-                if uri.startswith("papers://"):
-                    session = sess
-                    break
-            
-        if not session:
-            print(f"Resource '{resource_uri}' not found.")
-            return
-        
-        try:
-            result = await session.read_resource(uri=resource_uri)
-            if result and result.contents:
-                print(f"\nResource: {resource_uri}")
-                print("Content:")
-                print(result.contents[0].text)
-            else:
-                print("No content available.")
-        except Exception as e:
-            print(f"Error: {e}")
     
     async def list_prompts(self):
         """List all available prompts."""
